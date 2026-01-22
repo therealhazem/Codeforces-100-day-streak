@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 # depslib dependency file v1.0
 1767301505 source:c:\users\pc\desktop\codeforces 100 day streak\problems\main.cpp
 	<iostream>
 
+=======
+# depslib dependency file v1.0
+1767301505 source:c:\users\pc\desktop\codeforces 100 day streak\problems\main.cpp
+	<iostream>
+
+>>>>>>> 6c05bb93d41bb6fde1fdeb36b5216d66f6c12f6a
