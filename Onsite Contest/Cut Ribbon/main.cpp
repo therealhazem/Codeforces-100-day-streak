@@ -14,12 +14,31 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    float h,l;
-    cin>>h>>l;
+    int n,a,b,c;
+    cin>>n>>a>>b>>c;
 
-    double result = ((l*l)-(h*h))/(2*h);
-    printf("%.13f", result);
+    vector<int> arr = {a,b,c};
+    sort(arr.begin(), arr.end());
+
+    int rib=0;
+
+    for (int i=n/arr[0]; i>=0; i--) {
+        int used = i*arr[0];
+        int rem = n-used;
+
+        if(rem % arr[1] == 0) {
+            rib = i + (rem/arr[1]);
+            break;
+        }
+        if(rem % arr[2]==0) {
+            rib = i+ (rem/arr[2]);
+            break;
+        }
+    }
+
+    cout<<rib;
     return 0;
-
 }
+
+
 
