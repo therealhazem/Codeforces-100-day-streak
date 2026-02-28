@@ -15,21 +15,18 @@ int main() {
     cin.tie(nullptr);
 
     int n;
-    string s;
-    cin>>n>>s;
+    cin>>n;
+    int space=0;
 
-    deque<int> dq;
-    dq.push_back(n);
-
-    for (int i = n-1; i >=0; i--) {
-        if (s[i] == 'L')
-            dq.push_back(i);
-        else
-            dq.push_front(i);
+    while(n--){
+        for(int i=0; i<space; i++)cout<<" ";
+        for(int i=0; i<=(n*2); i++){
+            cout<<"*";
+        }
+        space++;
+        cout<<endl;
     }
 
-    for (int x : dq)
-        cout << x << " ";
 
     return 0;
 }
