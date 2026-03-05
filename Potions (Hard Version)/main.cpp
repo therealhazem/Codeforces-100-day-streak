@@ -14,32 +14,25 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    long long n;
+    int n;
     cin>>n;
-    long long health=0;
-    long long ans=0;
-    priority_queue<long long, vector<long long>, greater<long long>> negative;
-    while(n--){
+
+    long long health = 0;
+    priority_queue<long long, vector<long long>, greater<long long>> po;
+
+    for(int i=0; i<n; i++){
         long long x;
         cin>>x;
-        if(x>=0){
-            ans++;
-            health+=x;
-        }else{
-            negative.push(x);
+
+        health += x;
+        po.push(x);
+
+        if(health < 0) {
+            health -= po.top();
+            po.pop();
         }
     }
 
-    while(health>=0){
-        health +=negative.top();
-        negative.pop();
-        ans++;
-    }
-
-    cout<<ans;
-    if(health>=0)cout<<ans;
-    else cout<<ans+1;
-
-    return 0;
+    cout<<po.size();
 }
 
