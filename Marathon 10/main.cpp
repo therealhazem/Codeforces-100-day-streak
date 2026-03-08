@@ -11,22 +11,17 @@
 #include <cmath>
 using namespace std;
 
-int main() {
+int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int n;
-    cin>>n;
+    int t;
+    cin>>t;
 
-    n++;
-    while(true){
-        string s = to_string(n);
-        set<char> digits(s.begin(), s.end());
-        if(digits.size() == 4){
-            cout<<n;
-            return 0;
-        }
-        n++;
+    while(t--){
+        int n;
+        cin>>n;
+        cout<<(--n)<<"\n";
     }
 
     return 0;
