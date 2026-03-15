@@ -14,29 +14,36 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int n,need;
-    int sum=0;
-    int mine=0;
-    int mini=0;
-    priority_queue<int> coins;
+    int n;
     cin>>n;
 
     while(n--){
         int x;
         cin>>x;
-        sum+=x;
-        coins.push(x);
+
+        deque<int> h;
+        deque<int> v;
+        for(int i=0; i<x; i++){
+            int s;
+            cin>>s;
+            h.push_back(s);
+            v.push_front(s);
+        }
+
+        vector<pair<int,int>> diffs(x-1);
+        for(int i=0;i<x-1;i++){
+            diffs[i].first = h[i] - h[i+1];
+            diffs[i].second = v[i] - v[i+1];
+        }
+
+
+
+        for(int i=0; i<x-1; i++){
+            cout<<"("<<diffs[i].first<<" "<<diffs[i].second<<")";
+        }
+        cout<<"\n";
+
     }
-
-    need = sum/2;
-    while(mine<=need){
-        mine+=coins.top();
-        mini++;
-        coins.pop();
-    }
-
-    cout<<mini;
-
     return 0;
 }
 
