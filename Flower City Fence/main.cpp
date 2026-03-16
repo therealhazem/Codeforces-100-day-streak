@@ -14,36 +14,34 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int n;
+    long long n;
     cin>>n;
 
     while(n--){
-        int x;
-        cin>>x;
-
-        deque<int> h;
-        deque<int> v;
-        for(int i=0; i<x; i++){
-            int s;
-            cin>>s;
-            h.push_back(s);
-            v.push_front(s);
+        long long s;
+        cin>>s;
+        vector<long long> arr(s);
+        for(int i=0;i<s; i++){
+            cin>>arr[i];
         }
+        if(s != arr[0]){
+            cout<<"NO\n";
+        }else{
+            vector<long long> longg(s+1);
+            longg[0] = s;
 
-        vector<pair<int,int>> diffs(x-1);
-        for(int i=0;i<x-1;i++){
-            diffs[i].first = h[i] - h[i+1];
-            diffs[i].second = v[i] - v[i+1];
+            for(long long i=0; i<s; i++) longg[arr[i]]--;
+            for(long long i=1; i<s; i++) longg[i] = longg[i]+longg[i-1];
+
+            bool ok = true;
+            for(int i=0; i<s; i++){
+                if(longg[i] != arr[i]){
+                    ok=false;
+                    break;
+                }
+            }
+            (ok)?cout<<"YES\n":cout<<"NO\n";
         }
-
-
-
-        for(int i=0; i<x-1; i++){
-            cout<<"("<<diffs[i].first<<" "<<diffs[i].second<<")";
-        }
-        cout<<"\n";
-
     }
     return 0;
 }
-
